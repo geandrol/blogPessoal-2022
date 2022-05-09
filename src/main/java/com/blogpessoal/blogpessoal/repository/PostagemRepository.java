@@ -1,11 +1,11 @@
-package com.generation.blogpessoal.repository;
+package com.blogpessoal.blogpessoal.repository;
 
 import java.util.List;
 
-import com.generation.blogpessoal.model.Postagem;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.blogpessoal.blogpessoal.model.Postagem;
 
 
 @Repository
