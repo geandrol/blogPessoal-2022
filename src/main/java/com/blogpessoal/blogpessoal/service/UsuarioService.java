@@ -14,15 +14,12 @@ import com.blogpessoal.blogpessoal.model.Usuario;
 import com.blogpessoal.blogpessoal.model.UsuarioLogin;
 import com.blogpessoal.blogpessoal.repository.UsuarioRepository;
 
-
-
 @Service
 public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
 
 		if (usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
@@ -33,7 +30,6 @@ public class UsuarioService {
 		return Optional.of(usuarioRepository.save(usuario));
 	
 	}
-
 
 	public Optional<Usuario> atualizarUsuario(Usuario usuario) {
 		
@@ -105,7 +101,7 @@ public class UsuarioService {
 	private String gerarBasicToken(String usuario, String senha) {
 
 		String token = usuario + ":" + senha;
-		byte[] tokenBase64 = Base64.encodeBase64(token.getBytes(Charset.forName("US-ASCII")));
+		byte[] tokenBase64 = Base64.decodeBase64(token.getBytes(Charset.forName("US-ASCII")));
 		return "Basic " + new String(tokenBase64);
 
 	}
